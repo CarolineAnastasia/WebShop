@@ -1,0 +1,72 @@
+﻿@model IEnumerable<MyMagazine.Models.Phone>
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Xiaomi</h3>
+
+<table class="table">
+    <tr>
+        <th>Модель</th>
+        <th>Марка-виробник</th>
+        <th>Ціна</th>
+        <th>Зображення</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Producer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @{
+                    switch (item.Producer)
+                    {
+                        case "Huawei":
+                            <text>
+                                <img src="~/Content/huawei.jpeg" />
+                            </text>
+                            break;
+                        case "Samsung":
+                            <text>
+                                <img src="~/Content/samsung.jpg" />
+                            </text>
+                            break;
+                        case "Apple":
+                            <text>
+                                <img src="~/Content/iphone.jpg" />
+                            </text>
+                            break;
+                        case "Xiaomi":
+                            <text>
+                                <img src="~/Content/xiaomi.jpg" />
+                            </text>
+                            break;
+                        default:
+                            <text>
+                                <img src="~/Content/windowsphone.jpg" />
+                            </text>
+                            break;
+                    }
+                }
+            </td>
+            <td><a href="/Home/Buy/@item.Id">Buy</a></td>
+
+            @if (User.Identity.Name == "admin@gmail.com")
+            {
+                <td>
+                    @Html.ActionLink("Edit", "EditGoods", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "DeleteGoods", new { id = item.Id })
+                </td>
+            }
+        </tr>
+    }
+
+</table>

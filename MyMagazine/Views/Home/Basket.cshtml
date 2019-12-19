@@ -1,0 +1,30 @@
+﻿@model MyMagazine.Models.IndexViewModel
+@using MyMagazine.Helpers
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<h3>BASKET</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Email</th>
+            <th>FIO</th>
+            <th>PhoneId</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Purchases)
+        {
+            <tr>
+                <td>@item.Email</td>
+                <td>@item.FIO</td>
+                <td>@item.PhoneId</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+<div class="btn-group">
+    @Html.PageLinks(Model.PageInfo, x => Url.Action("Index", new { page = x }))
+</div>
