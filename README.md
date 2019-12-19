@@ -1,6 +1,5 @@
-<<<<<<< HEAD
+
 # WebMarket
 This repo is for university home task.
 =======
-"# WebShop" 
->>>>>>> 8f60977ceea8b9fc7c60589103a734d85efc2d82
+This is a WebMarket created using ASP.NET MVC pattern. For authentication used form authentication. Provided roles: user, admin (with more law, adding, deleting, editing goods). Connected to database, using Entity Framework.
